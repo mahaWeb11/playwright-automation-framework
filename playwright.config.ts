@@ -25,6 +25,9 @@ export default defineConfig({
   reporter: [["html"], ["list"]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    launchOptions: {
+      args: ["--disable-features=Autofill,AutofillServerCommunication"],
+    },
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 

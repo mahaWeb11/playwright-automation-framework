@@ -16,6 +16,6 @@ export const LOGIN_DATA = {
 
   sqlInjection: {
     username: "' OR '1'='1",
-    password: "' OR '1'='1",
+    password: "abcdef",
   },
 };

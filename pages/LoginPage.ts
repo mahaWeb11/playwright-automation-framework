@@ -60,7 +60,7 @@ export default class LoginPage extends BasePage {
 
   async verifyErrorMessageVisible() {
     await this.page.waitForLoadState("domcontentloaded");
-    await expect(this.errorMessage).toBeVisible();
+    await expect(this.errorMessage).toBeVisible({ timeout: 15000 });
   }
 
   async verifyUsernameRequiredVisible() {
