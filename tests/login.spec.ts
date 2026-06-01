@@ -1,5 +1,4 @@
 import { test, expect } from "../fixtures/test";
-import PomManager from "../PageManager/PomManager";
 
 import { CONFIG } from "../config/config.ts";
 import { LOGIN_DATA } from "../config/testData.ts";

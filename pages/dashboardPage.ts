@@ -1,7 +1,7 @@
 import { expect, Locator, Page } from "@playwright/test";
-import BasePage from "./BasePage";
+import basePage from "./basePage";
 
-export default class DashboardPage extends BasePage {
+export default class dashboardPage extends basePage {
   readonly dashboardHeader: Locator;
   readonly logoutButton: Locator;
 

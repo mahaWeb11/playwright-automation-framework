@@ -1,13 +1,13 @@
 import { test as base, expect } from "@playwright/test";
-import PomManager from "../PageManager/PomManager";
+import pomManager from "../pageManager/pomManager";
 
 type Fixtures = {
-  pm: PomManager;
+  pm: pomManager;
 };
 
 export const test = base.extend<Fixtures>({
   pm: async ({ page }, use) => {
-    const pm = new PomManager(page);
+    const pm = new pomManager(page);
     await use(pm);
   },
 });

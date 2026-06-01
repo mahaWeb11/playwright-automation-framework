@@ -1,8 +1,8 @@
 import { expect, Locator, Page } from "@playwright/test";
-import BasePage from "./BasePage";
+import basePage from "./basePage.ts";
 import { CONFIG } from "../config/config.ts";
 
-export default class LoginPage extends BasePage {
+export default class LoginPage extends basePage {
   readonly usernameInput: Locator;
   readonly passwordInput: Locator;
   readonly loginButton: Locator;
