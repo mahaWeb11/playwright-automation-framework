@@ -1,6 +1,6 @@
-import { Locator, Page } from "@playwright/test";
+import { expect, Locator, Page } from "@playwright/test";
 
-export default class BasePage {
+export default class basePage {
   protected page: Page;
 
   constructor(page: Page) {
@@ -26,7 +26,7 @@ export default class BasePage {
   }
 
   async waitForVisible(locator: Locator) {
-    await locator.waitFor({ state: "visible" });
+    expect(locator).toBeVisible(); // changed
   }
 
   async waitForURL(url: string | RegExp) {

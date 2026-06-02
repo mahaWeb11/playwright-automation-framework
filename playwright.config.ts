@@ -25,6 +25,8 @@ export default defineConfig({
   reporter: [["html"], ["list"]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    viewport: { width: 1920, height: 1080 },
+
     launchOptions: {
       args: ["--disable-features=Autofill,AutofillServerCommunication"],
     },
