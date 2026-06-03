@@ -16,7 +16,7 @@ test.describe("Login API", () => {
         await test.step("Send login request with valid credentials", async () =>
           await performLogin(am, CONFIG.admin.username, CONFIG.admin.password));
 
-      await test.step("Verify response status is 200 or 302", async () => {
+      await test.step("Verify response status is OK or FOUND", async () => {
         expect([httpStatus.OK, httpStatus.FOUND]).toContain(response.status());
       });
 
@@ -36,7 +36,7 @@ test.describe("Login API", () => {
           LOGIN_DATA.invalidPassword.password,
         ));
 
-    await test.step("Verify response status is 200", async () => {
+    await test.step("Verify response status is OK", async () => {
       expect(response.status()).toBe(httpStatus.OK);
     });
 
@@ -55,7 +55,7 @@ test.describe("Login API", () => {
           LOGIN_DATA.invalidUsername.password,
         ));
 
-    await test.step("Verify response status is 200", async () => {
+    await test.step("Verify response status is OK", async () => {
       expect(response.status()).toBe(httpStatus.OK);
     });
 
@@ -70,7 +70,7 @@ test.describe("Login API", () => {
       await test.step("Send login request with empty credentials", async () =>
         await performLogin(am, "", ""));
 
-    await test.step("Verify response status is 200", async () => {
+    await test.step("Verify response status is OK", async () => {
       expect(response.status()).toBe(httpStatus.OK);
     });
 

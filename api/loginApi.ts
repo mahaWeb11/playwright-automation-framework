@@ -1,7 +1,9 @@
-import { APIRequestContext } from "@playwright/test";
+import { APIRequestContext, APIResponse } from "@playwright/test";
+import { iLoginApi } from "../interfaces/iLoginApi";
 
-export default class loginApi {
+export default class loginApi implements iLoginApi {
   private request: APIRequestContext;
+
   constructor(request: APIRequestContext) {
     this.request = request;
   }
@@ -15,7 +17,7 @@ export default class loginApi {
     return match?.[1] ?? "";
   }
 
-  async login(username: string, password: string) {
+  async login(username: string, password: string): Promise<APIResponse> {
     const token = await this.getToken();
     return await this.request.post("/web/index.php/auth/validate", {
       headers: {
