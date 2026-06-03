@@ -1,4 +1,4 @@
-import apiManager from "../apiManager/apiManager";
+import apiManager from "../utils/apiManager";
 
 export async function performLogin(
   am: apiManager,

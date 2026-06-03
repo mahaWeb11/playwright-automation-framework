@@ -60,8 +60,6 @@ export default class LoginPage extends basePage {
   }
 
   async verifyErrorMessageVisible() {
-    this.logger.step("Verifying error message is visible");
-
     await this.page.waitForLoadState("domcontentloaded");
     await expect(this.errorMessage).toBeVisible({ timeout: 15000 });
 
@@ -69,24 +67,18 @@ export default class LoginPage extends basePage {
   }
 
   async verifyUsernameRequiredVisible() {
-    this.logger.step("Verifying username required message");
-
     await expect(this.usernameRequired).toBeVisible();
 
     this.logger.info("Username required message verified");
   }
 
   async verifyPasswordRequiredVisible() {
-    this.logger.step("Verifying password required message");
-
     await expect(this.passwordRequired).toBeVisible();
 
     this.logger.info("Password required message verified");
   }
 
   async verifyRequiredMessagesVisible() {
-    this.logger.step("Verifying all required messages");
-
     await this.verifyUsernameRequiredVisible();
     await this.verifyPasswordRequiredVisible();
 

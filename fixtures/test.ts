@@ -1,6 +1,6 @@
 import { test as base, expect, request } from "@playwright/test";
-import pomManager from "../pageManager/pomManager";
-import apiManager from "../apiManager/apiManager.ts";
+import pomManager from "../utils/pomManager.ts";
+import apiManager from "../utils/apiManager.ts";
 import { CONFIG } from "../config/config";
 
 type Fixtures = {

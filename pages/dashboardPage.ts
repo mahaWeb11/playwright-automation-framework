@@ -18,14 +18,11 @@ export default class dashboardPage extends basePage {
   }
 
   async logout() {
-    this.logger.step("Clicking logout button");
     await this.click(this.logoutButton);
     this.logger.info("Logout clicked");
   }
 
   async verifyDashboardLoaded() {
-    this.logger.step("Verifying dashboard is loaded");
-
     await this.waitForURL(/dashboard/);
 
     await this.page.waitForLoadState("domcontentloaded");
