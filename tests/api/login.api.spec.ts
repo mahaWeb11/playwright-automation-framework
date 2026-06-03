@@ -4,6 +4,9 @@ import { CONFIG } from "../../config/config";
 
 import { performLogin } from "../../helpers/loginHelper";
 
+import { httpStatus } from "../../constants/httpStatus";
+import { apiMessages } from "../../constants/apiMessages";
+
 test.describe("Login API", () => {
   test(
     "Should redirect to the dashboard page when entered valid credentials",
@@ -14,12 +17,12 @@ test.describe("Login API", () => {
           await performLogin(am, CONFIG.admin.username, CONFIG.admin.password));
 
       await test.step("Verify response status is 200 or 302", async () => {
-        expect([200, 302]).toContain(response.status());
+        expect([httpStatus.OK, httpStatus.FOUND]).toContain(response.status());
       });
 
       await test.step("Verify no CSRF token errors in response", async () => {
-        expect(body).not.toContain("invalid_csrf_token");
-        expect(body).not.toContain("CSRF token validation failed");
+        expect(body).not.toContain(apiMessages.INVALID_CSRF_TOKEN);
+        expect(body).not.toContain(apiMessages.CSRF_VALIDATION_FAILED);
       });
     },
   );
@@ -34,12 +37,12 @@ test.describe("Login API", () => {
         ));
 
     await test.step("Verify response status is 200", async () => {
-      expect(response.status()).toBe(200);
+      expect(response.status()).toBe(httpStatus.OK);
     });
 
     await test.step("Verify invalid_credentials error in response", async () => {
-      expect(body).not.toContain("invalid_csrf_token");
-      expect(body).toContain("invalid_credentials");
+      expect(body).not.toContain(apiMessages.INVALID_CSRF_TOKEN);
+      expect(body).toContain(apiMessages.INVALID_CREDENTIALS);
     });
   });
 
@@ -53,12 +56,12 @@ test.describe("Login API", () => {
         ));
 
     await test.step("Verify response status is 200", async () => {
-      expect(response.status()).toBe(200);
+      expect(response.status()).toBe(httpStatus.OK);
     });
 
     await test.step("Verify invalid_credentials error in response", async () => {
-      expect(body).not.toContain("invalid_csrf_token");
-      expect(body).toContain("invalid_credentials");
+      expect(body).not.toContain(apiMessages.INVALID_CSRF_TOKEN);
+      expect(body).toContain(apiMessages.INVALID_CREDENTIALS);
     });
   });
 
@@ -68,11 +71,11 @@ test.describe("Login API", () => {
         await performLogin(am, "", ""));
 
     await test.step("Verify response status is 200", async () => {
-      expect(response.status()).toBe(200);
+      expect(response.status()).toBe(httpStatus.OK);
     });
 
     await test.step("Verify no CSRF token errors in response", async () => {
-      expect(body).not.toContain("invalid_csrf_token");
+      expect(body).not.toContain(apiMessages.INVALID_CSRF_TOKEN);
     });
   });
 
@@ -89,7 +92,7 @@ test.describe("Login API", () => {
           ));
 
       await test.step("Verify response does not redirect to dashboard", async () => {
-        expect(body).not.toContain("/dashboard");
+        expect(body).not.toContain(apiMessages.DASHBOARD);
       });
     },
   );
